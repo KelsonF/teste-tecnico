@@ -1,50 +1,31 @@
-# frozen_string_literal: true
-notice
- %></p>
+<!-- Assuming this is the view file located at app/views/sessions/index.html.erb -->
 
 <h1>Devices & Sessions</h1>
 
 <div id="sessions">
-# frozen_string_literal: true
-@sessions.each
- do |session| %>
-# frozen_string_literal: true
-dom_id session
- %>">
+  <% @sessions.each do |session| %>
+    <div id="<%= dom_id(session) %>">
       <p>
-        <strong>User Agent:</strong>
-# frozen_string_literal: true
-session.user_agent
- %>
+        <strong>User Agent:</strong> <%= session.user_agent %>
       </p>
 
       <p>
-        <strong>Ip Address:</strong>
-# frozen_string_literal: true
-session.ip_address
- %>
+        <strong>IP Address:</strong> <%= session.ip_address %>
       </p>
 
       <p>
-        <strong>Created at:</strong>
-# frozen_string_literal: true
-session.created_at
- %>
+        <strong>Created at:</strong> <%= session.created_at %>
       </p>
 
+      <p>
+        <%= button_to 'Log out', session, method: :delete %>
+      </p>
     </div>
-    <p>
-# frozen_string_literal: true
-button_to 'Log out', session, method: :delete
- %>
-    </p>
   <% end %>
 </div>
 
 <br>
 
 <div>
-# frozen_string_literal: true
-link_to 'Back', root_path
- %>
+  <%= link_to 'Back', root_path %>
 </div>
