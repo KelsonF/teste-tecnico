@@ -1,69 +1,41 @@
-# frozen_string_literal: true
-alert
- %></p>
 
 <h1>Change your password</h1>
 
-# frozen_string_literal: true
-form_with(url: password_path, method: :patch)
- do |form| %>
+<%= form_with(url: password_path, method: :patch) do |form| %>
   <% if @user.errors.any? %>
     <div style="color: red">
-# frozen_string_literal: true
-pluralize(@user.errors.count, 'error')
- %> prohibited this user from being saved:</h2>
-
+      <%= pluralize(@user.errors.count, 'error') %> prohibited this user from being saved:</h2>
       <ul>
-# frozen_string_literal: true
-@user.errors.each
- do |error| %>
-# frozen_string_literal: true
-error.full_message
- %></li>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-# frozen_string_literal: true
-form.label :password_challenge, style: 'display: block'
- %>
-# frozen_string_literal: true
-form.password_field :password_challenge, required: true, autofocus: true, autocomplete: 'current-password'
- %>
+  <div class="form-group">
+    <%= form.label :password_challenge, 'Current password', style: 'display: block' %>
+    <%= form.password_field :password_challenge, required: true, autofocus: true, autocomplete: 'current-password' %>
   </div>
 
-  <div>
-# frozen_string_literal: true
-form.label :password, 'New password', style: 'display: block'
- %>
-# frozen_string_literal: true
-form.password_field :password, required: true, autocomplete: 'new-password'
- %>
+  <div class="form-group">
+    <%= form.label :password, 'New password', style: 'display: block' %>
+    <%= form.password_field :password, required: true, autocomplete: 'new-password' %>
     <div>12 characters minimum.</div>
   </div>
 
-  <div>
-# frozen_string_literal: true
-form.label :password_confirmation, 'Confirm new password', style: 'display: block'
- %>
-# frozen_string_literal: true
-form.password_field :password_confirmation, required: true, autocomplete: 'new-password'
- %>
+  <div class="form-group">
+    <%= form.label :password_confirmation, 'Confirm new password', style: 'display: block' %>
+    <%= form.password_field :password_confirmation, required: true, autocomplete: 'new-password' %>
   </div>
 
   <div>
-# frozen_string_literal: true
-form.submit 'Save changes'
- %>
+    <%= form.submit 'Save changes', class: 'btn btn-primary' %>
   </div>
 <% end %>
 
 <br>
 
 <div>
-# frozen_string_literal: true
-link_to 'Back', root_path
- %>
+  <%= link_to 'Back', root_path %>
 </div>

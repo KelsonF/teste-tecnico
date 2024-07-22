@@ -1,57 +1,34 @@
 <h1>Sign up</h1>
 
-# frozen_string_literal: true
-form_with(url: sign_up_path)
- do |form| %>
+<%= form_with(url: sign_up_path) do |form| %>
   <% if @user.errors.any? %>
     <div style="color: red">
-# frozen_string_literal: true
-pluralize(@user.errors.count, 'error')
- %> prohibited this user from being saved:</h2>
-
+      <%= pluralize(@user.errors.count, 'error') %> prohibited this user from being saved:
       <ul>
-# frozen_string_literal: true
-@user.errors.each
- do |error| %>
-# frozen_string_literal: true
-error.full_message
- %></li>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="form-group">
-# frozen_string_literal: true
-form.label :email, style: 'display: block'
- %>
-# frozen_string_literal: true
-form.email_field :email, value: @user.email, required: true, autofocus: true, autocomplete: 'email'
- %>
+    <%= form.label :email, style: 'display: block' %>
+    <%= form.email_field :email, value: @user.email, required: true, autofocus: true, autocomplete: 'email' %>
   </div>
 
   <div class="form-group">
-# frozen_string_literal: true
-form.label :password, style: 'display: block'
- %>
-# frozen_string_literal: true
-form.password_field :password, required: true, autocomplete: 'new-password'
- %>
+    <%= form.label :password, style: 'display: block' %>
+    <%= form.password_field :password, required: true, autocomplete: 'new-password' %>
     <div>12 characters minimum.</div>
   </div>
 
   <div class="form-group">
-# frozen_string_literal: true
-form.label :password_confirmation, style: 'display: block'
- %>
-# frozen_string_literal: true
-form.password_field :password_confirmation, required: true, autocomplete: 'new-password'
- %>
+    <%= form.label :password_confirmation, style: 'display: block' %>
+    <%= form.password_field :password_confirmation, required: true, autocomplete: 'new-password' %>
   </div>
 
   <div>
-# frozen_string_literal: true
-form.submit 'Sign up', class: 'btn btn-primary'
- %>
+    <%= form.submit 'Sign up', class: 'btn btn-primary' %>
   </div>
 <% end %>
