@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+alert
+ %></p>
+
+<h1>Forgot your password?</h1>
+
+# frozen_string_literal: true
+form_with(url: identity_password_reset_path)
+ do |form| %>
+  <div>
+# frozen_string_literal: true
+form.label :email, style: 'display: block'
+ %>
+# frozen_string_literal: true
+form.email_field :email, required: true, autofocus: true
+ %>
+  </div>
+
+  <div>
+# frozen_string_literal: true
+form.submit 'Send password reset email'
+ %>
+  </div>
+<% end %>

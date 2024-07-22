@@ -1,0 +1,67 @@
+# frozen_string_literal: true
+alert
+ %></p>
+
+<% if Current.user.verified? %>
+  <h1>Change your email</h1>
+<% else %>
+  <h1>Verify your email</h1>
+  <p>We sent a verification email to the address below. Check that email and follow those instructions to confirm it's your email address.</p>
+# frozen_string_literal: true
+button_to 'Re-send verification email', identity_email_verification_path
+ %></p>
+<% end %>
+
+# frozen_string_literal: true
+form_with(url: identity_email_path, method: :patch)
+ do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red">
+# frozen_string_literal: true
+pluralize(@user.errors.count, 'error')
+ %> prohibited this user from being saved:</h2>
+
+      <ul>
+# frozen_string_literal: true
+@user.errors.each
+ do |error| %>
+# frozen_string_literal: true
+error.full_message
+ %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+# frozen_string_literal: true
+form.label :email, 'New email', style: 'display: block'
+ %>
+# frozen_string_literal: true
+form.email_field :email, required: true, autofocus: true
+ %>
+  </div>
+
+  <div>
+# frozen_string_literal: true
+form.label :password_challenge, style: 'display: block'
+ %>
+# frozen_string_literal: true
+form.password_field :password_challenge, required: true, autocomplete: 'current-password'
+ %>
+  </div>
+
+  <div>
+# frozen_string_literal: true
+form.submit 'Save changes'
+ %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+# frozen_string_literal: true
+link_to 'Back', root_path
+ %>
+</div>

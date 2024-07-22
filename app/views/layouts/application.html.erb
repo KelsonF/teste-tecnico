@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TesteTecnico</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+# frozen_string_literal: true
+csrf_meta_tags
+ %>
+# frozen_string_literal: true
+csp_meta_tag
+ %>
+
+# frozen_string_literal: true
+stylesheet_link_tag 'application', "data-turbo-track": 'reload'
+ %>
+# frozen_string_literal: true
+stylesheet_link_tag 'payments', media: 'all'
+ %>
+# frozen_string_literal: true
+javascript_importmap_tags
+ %>
+  </head>
+
+  <body>
+# frozen_string_literal: true
+yield
+ %>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<!-- app/views/payments/confirmation.html.erb -->
+<div class="payment-confirmation">
+  <h1>Pagamento Confirmado</h1>
+
+  <pre>
+    O pagamento de <%= number_to_currency(@payment.transaction_amount) %>
+    foi processado com sucesso para <%= @payment.user_name %>.
+    Obrigado!
+  </pre>
+
+  <button class='btn btn-primary'>
+    <%= link_to 'Realizar novo pagamento', root_path, class: 'link' %>
+  </button>
+</div>

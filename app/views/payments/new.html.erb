@@ -1,0 +1,34 @@
+<!-- app/views/payments/new.html.erb -->
+<h1>Faça seu Pagamento</h1>
+
+<div class="form">
+  <%= form_with(model: @payment, url: payments_path) do |form| %>
+    <% if @payment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@payment.errors.count, "error") %> foram encontrados durante a validação:</h2>
+        <ul>
+        <% @payment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :user_name, 'Nome' %>
+      <%= form.text_field :user_name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :user_email, 'E-mail' %>
+      <%= form.email_field :user_email, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :transaction_amount, 'Valor a Pagar' %>
+      <%= form.number_field :transaction_amount, step: '0.01', class: 'form-control' %>
+    </div>
+
+    <%= form.submit 'Realizar Pagamento', class: 'btn btn-primary' %>
+  <% end %>
+</div>
