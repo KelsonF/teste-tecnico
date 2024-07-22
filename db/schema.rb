@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_22_000350) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_22_030817) do
   create_table "payments", force: :cascade do |t|
     t.string "user_name"
     t.string "user_email"
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_22_000350) do
     t.boolean "verified", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

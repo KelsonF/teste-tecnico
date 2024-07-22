@@ -1,0 +1,28 @@
+<!-- app/views/admin/payments/index.html.erb -->
+
+<div class="container">
+  <h1>Lista de Pagamentos Realizados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome do Cliente</th>
+        <th>Valor</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @payments.each do |payment| %>
+        <tr>
+          <td><%= payment.nome %></td>
+          <td><%= number_to_currency(payment.valor) %></td>
+          <td><%= payment.aprovado? ? 'Aprovado' : 'Não Aprovado' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= link_to 'Voltar à Página Inicial', root_path %>
+  </div>
+</div>

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resource :password_reset,     only: %i[new edit create update]
   end
 
+  namespace :admin do
+    resources :payments, only: %i[index]
+  end
+
   root 'payments#new'
 
   get 'up' => 'rails/health#show', as: :rails_health_check
